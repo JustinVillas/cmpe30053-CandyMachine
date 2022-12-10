@@ -22,7 +22,7 @@ Candy_Machine_Format()
 #A window that will show a thankyou message.
 def thankyoumessage():
     thankyoumessage_GUI = Tk()
-    thankyoumessage_GUI.title("Input")
+    thankyoumessage_GUI.title("Exit Window")
     thankyoumessage_GUI.geometry('600x330')
     thankyoumessage_GUI.config(bg="#114B5F")
     thankyoumessage_GUI.resizable(0, 0)
@@ -33,7 +33,7 @@ def thankyoumessage():
 def candy_window():
     global candyPay
     candy_GUI = Tk()
-    candy_GUI.title("Input")
+    candy_GUI.title("Purchase candy")
     candy_GUI.geometry('600x330')
     candy_GUI.config(bg="#114B5F")
     candy_GUI.resizable(0, 0)
@@ -47,7 +47,7 @@ def candy_window():
 def chips_window():
     global chipsPay
     chips_GUI = Tk()
-    chips_GUI.title("Input")
+    chips_GUI.title("Purchase chips")
     chips_GUI.geometry('600x330')
     chips_GUI.config(bg="#114B5F")
     chips_GUI.resizable(0, 0)
@@ -61,7 +61,7 @@ def chips_window():
 def gum_window():
     global gumPay
     gum_GUI = Tk()
-    gum_GUI.title("Input")
+    gum_GUI.title("Purchase gum")
     gum_GUI.geometry('600x330')
     gum_GUI.config(bg="#114B5F")
     gum_GUI.resizable(0, 0)
@@ -74,7 +74,7 @@ def gum_window():
 def cookies_window():
     global cookiesPay
     cookies_GUI = Tk()
-    cookies_GUI.title("Input")
+    cookies_GUI.title("Purchase cookies")
     cookies_GUI.geometry('600x330')
     cookies_GUI.config(bg="#114B5F")
     cookies_GUI.resizable(0, 0)
@@ -88,51 +88,49 @@ def cookies_window():
 
 def candyPaymentChecker():
     userInput1 = candyPay.get()
-    if userInput1  == str(Candy_Machine__Main[0]):
-            # It will select the index of the element that match what the user is finding
+    candyCost = str(Candy_Machine__Main[0])
+
+    if userInput1  == candyCost:
+        # It will select the index of the element that match what the user is finding
         thankyoumessage()
-    elif userInput1  > str(Candy_Machine__Main[0]):
-        messagebox.showerror("Error", "We have received overpayment.\n Received coins are returned")
-    elif userInput1  < str(Candy_Machine__Main[0]):
-        messagebox.showerror("Error", "Insufficient coins")
+    else:
+        userInput1  > candyCost or candyCost > userInput1
+        messagebox.showerror("Error", "Please insert 10 cents.")
 
 def chipsPaymentChecker():
     userInput2 = chipsPay.get()
-    if userInput2  == str(Candy_Machine__Main[1]):
-            # It will select the index of the element that match what the user is finding
+    chipsCost = str(Candy_Machine__Main[1])
+    if userInput2  == chipsCost:
+        # It will select the index of the element that match what the user is finding
         thankyoumessage()
-    elif userInput2 > str(Candy_Machine__Main[1]):
-        messagebox.showerror("Error", "We have received overpayment.\n Received coins are returned")
-    elif userInput2 < str(Candy_Machine__Main[1]):
-        messagebox.showerror("Error", "Insufficient coins")
+    else:
+        userInput2  > chipsCost or chipsCost > userInput2
+        messagebox.showerror("Error", "Please insert 20 cents.")
 
 
 def gumPaymentChecker():
     userInput3 = gumPay.get()
-    if userInput3  == str(Candy_Machine__Main[2]):
+    gumCost = str(Candy_Machine__Main[2])
+    if userInput3  == gumCost:
              # It will select the index of the element that match what the user is finding
          thankyoumessage()
-    elif userInput3 > str(Candy_Machine__Main[2]):
-        messagebox.showerror("Error", "We have received overpayment.\n Received coins are returned")
-    elif userInput3 < str(Candy_Machine__Main[2]):
-        messagebox.showerror("Error", "Insufficient coins")
+    else:
+        userInput3 > gumCost or userInput3 < gumCost
+        messagebox.showerror("Error", "Please insert 15 cents.")
+
 
 def cookiesPaymentChecker():
     userInput4 = cookiesPay.get()
-    if userInput4  == str(Candy_Machine__Main[3]):
+    cookiesCost = str(Candy_Machine__Main[3])
+    if userInput4  == cookiesCost:
              # It will select the index of the element that match what the user is finding
          thankyoumessage()
-    elif userInput4 > str(Candy_Machine__Main[3]):
-        messagebox.showerror("Error", "We have received overpayment.\n Received coins are returned")
-    elif userInput4 < str(Candy_Machine__Main[3]):
-        messagebox.showerror("Error", "Insufficient coins")
 
-def Exit():
-    isExit = messagebox.askyesno("Goodbye message", "Do you want to continue")
-    if isExit == True:
-        Candy_Machine_GUI.destroy()
     else:
-        False
+        userInput4 > cookiesCost or cookiesCost > userInput4
+        messagebox.showerror("Error", "Please insert 30 cents.")
+
+
 
 
 def Candy_MachineButtons():
@@ -140,7 +138,7 @@ def Candy_MachineButtons():
     Button(Candy_Machine_GUI, text="Chips", font='Calibri 14 bold', bg='turquoise4', foreground="white", width=50, command = chips_window).place(x=45, y=125)
     Button(Candy_Machine_GUI, text="Gum", font='Calibri 14 bold', bg='turquoise4', foreground="white", width=50, command = gum_window).place(x=45, y=170)
     Button(Candy_Machine_GUI, text="Cookies", font='Calibri 14 bold', bg='turquoise4', foreground="white", width=50,command = cookies_window).place(x=45, y=215)
-    Button(Candy_Machine_GUI, text="Exit", font='Calibri 14 bold', bg='turquoise4', foreground="red", width=50, command = Exit).place(x=45, y=260)
+    Button(Candy_Machine_GUI, text="Exit", font='Calibri 14 bold', bg='turquoise4', foreground="red", width=50, command = exit).place(x=45, y=260)
 
 Candy_MachineButtons()
 
